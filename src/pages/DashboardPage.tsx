@@ -102,6 +102,17 @@ export default function DashboardPage({ onSelectTool }: DashboardPageProps) {
   const cardsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const heroItems = document.querySelectorAll('.dashboard-hero-content > *');
+    if (heroItems.length > 0) {
+      animate(heroItems, {
+        opacity: [0, 1],
+        y: [18, 0],
+        duration: 620,
+        delay: stagger(90),
+        ease: 'outExpo'
+      });
+    }
+
     if (cardsContainerRef.current) {
       try {
         const cards = cardsContainerRef.current.querySelectorAll('.tool-grid-card');
@@ -136,8 +147,8 @@ export default function DashboardPage({ onSelectTool }: DashboardPageProps) {
   return (
     <div ref={containerRef} className="p-6 md:p-8 space-y-8">
       {/* Colorful Gradient Hero Banner */}
-      <div className="bg-gradient-to-r from-indigo-900 via-purple-900 to-slate-900 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden shadow-xl border border-indigo-500/20">
-        <div className="relative z-10 max-w-2xl space-y-4">
+      <div className="dashboard-hero bg-gradient-to-r from-indigo-950 via-violet-950 to-slate-950 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden shadow-xl border border-indigo-400/20">
+        <div className="dashboard-hero-content relative z-10 max-w-2xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/30 to-rose-500/30 border border-amber-300/40 text-amber-200 text-xs font-bold backdrop-blur-md shadow-xs">
             <Sparkles size={14} className="text-amber-300 animate-pulse" />
             <span>15 High-Performance Client-Side Utilities</span>
@@ -165,8 +176,8 @@ export default function DashboardPage({ onSelectTool }: DashboardPageProps) {
         </div>
 
         {/* Dynamic colorful background blobs */}
-        <div className="absolute -right-10 -top-10 w-96 h-96 bg-gradient-to-br from-pink-600/40 to-indigo-600/40 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute right-40 -bottom-20 w-80 h-80 bg-gradient-to-tr from-cyan-600/30 to-emerald-600/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="dashboard-hero-orb absolute -right-10 -top-10 w-96 h-96 bg-gradient-to-br from-pink-500/35 to-indigo-500/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="dashboard-hero-orb absolute right-40 -bottom-20 w-80 h-80 bg-gradient-to-tr from-cyan-500/25 to-emerald-500/30 rounded-full blur-3xl pointer-events-none" />
       </div>
 
       {/* Search & Category Filter Navigation */}
