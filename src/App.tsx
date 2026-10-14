@@ -204,7 +204,7 @@ export default function App() {
 
   const handlePurgeMemory = () => {
     cleanupAllBlobUrls();
-    showToast('Memory sandbox purged. GPU texture buffers released.');
+    showToast('Temporary image URLs cleaned up.');
   };
 
   const filteredSearchTools = ALL_TOOLS.filter((t) => {
@@ -278,8 +278,8 @@ export default function App() {
 
       {/* Search Modal */}
       {searchOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-md flex items-start justify-center pt-20 px-4">
-          <div className="bg-slate-900 border border-slate-700/80 rounded-3xl shadow-2xl w-full max-w-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 text-white">
+        <div className="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-md flex items-start justify-center pt-[max(2rem,8vh)] px-4" role="presentation" onMouseDown={(e) => { if (e.target === e.currentTarget) setSearchOpen(false); }}>
+          <div className="bg-slate-900 border border-slate-700/80 rounded-3xl shadow-2xl w-full max-w-xl max-h-[80vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200 text-white" role="dialog" aria-modal="true" aria-label="Search tools">
             <div className="p-4 border-b border-slate-800 flex items-center gap-3">
               <Search size={18} className="text-indigo-400" />
               <input
@@ -365,13 +365,13 @@ export default function App() {
                 </div>
                 <div>
                   <h1 className="text-sm font-black text-white tracking-tight leading-tight flex items-center gap-1.5">
-                    Daily Tool Kit
+                    CrazeTools
                     <span className="text-[9px] font-extrabold bg-gradient-to-r from-amber-400 to-pink-500 text-slate-950 px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-                      15 Tools
+                      15 TOOLS
                     </span>
                   </h1>
                   <p className="text-[11px] text-slate-400 font-medium">
-                    Low Memory • Step-by-Step Architecture
+                    Smart tools. Clean workflow.
                   </p>
                 </div>
               </button>
@@ -422,7 +422,7 @@ export default function App() {
               {/* RAM Flush / Purge Button */}
               <button
                 onClick={handlePurgeMemory}
-                title="Release canvas buffers & free browser memory"
+                title="Clear temporary image URLs"
                 className="hidden sm:flex items-center gap-1.5 text-[11px] font-bold text-emerald-400 hover:text-emerald-300 bg-emerald-950/40 hover:bg-emerald-950/60 px-3 py-1.5 rounded-xl border border-emerald-500/30 transition-all cursor-pointer"
               >
                 <Cpu size={13} />
@@ -580,11 +580,11 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-slate-800/80 bg-slate-950/70 backdrop-blur-md py-5 text-center text-xs text-slate-400 mt-auto relative z-10 font-medium">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p>Daily Tool Kit — Modular Step-by-Step Engine for Lowest Memory Footprint.</p>
+          <p>CrazeTools — useful utilities, one focused workspace.</p>
           <div className="flex items-center gap-3 text-slate-500">
             <span>On-Demand Code Splitting</span>
             <span>•</span>
-            <span>Instant GPU Hardware Accelerated</span>
+            <span>Privacy-first processing</span>
           </div>
         </div>
       </footer>
