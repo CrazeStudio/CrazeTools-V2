@@ -191,7 +191,8 @@ export default function DashboardPage({ onSelectTool }: DashboardPageProps) {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              aria-label="Search tools by name or feature"\n              placeholder="Search tools: compress, enhance, PDF, QR..."
+              aria-label="Search tools by name or feature"
+              placeholder="Search tools: compress, enhance, PDF, QR..."
               className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-2xs placeholder:text-slate-400 transition-all"
             />
           </div>
