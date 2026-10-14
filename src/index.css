@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@layer utilities {
+  /* Colorful animated gradient shifts */
+  @keyframes gradient-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes float-orb {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-24px) scale(1.08); }
+  }
+
+  @keyframes float-orb-reverse {
+    0%, 100% { transform: translateY(0px) scale(1.05); }
+    50% { transform: translateY(28px) scale(0.95); }
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 0.4; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-flow 6s ease infinite;
+  }
+
+  .animate-orb-1 {
+    animation: float-orb 8s ease-in-out infinite;
+  }
+
+  .animate-orb-2 {
+    animation: float-orb-reverse 10s ease-in-out infinite;
+  }
+
+  .animate-pulse-ring {
+    animation: pulse-ring 3s ease-in-out infinite;
+  }
+
+  /* Glassmorphism colorful cards */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* Glowing colorful borders */
+  .glow-indigo {
+    box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35);
+  }
+
+  .glow-emerald {
+    box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.35);
+  }
+
+  .glow-rose {
+    box-shadow: 0 0 25px -5px rgba(244, 63, 94, 0.35);
+  }
+}

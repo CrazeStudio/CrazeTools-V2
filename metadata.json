@@ -1,0 +1,6 @@
+{
+  "name": "Daily Tool Kit",
+  "description": "An all-in-one daily utility toolkit for images, PDFs, and units.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
