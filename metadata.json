@@ -1,6 +1,6 @@
 {
-  "name": "Daily Tool Kit",
-  "description": "An all-in-one daily utility toolkit for images, PDFs, and units.",
+  "name": "CrazeTools",
+  "description": "A focused toolkit for image editing, PDF workflows, converters, and developer utilities.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
