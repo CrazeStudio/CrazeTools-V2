@@ -102,8 +102,8 @@ export default function DashboardPage({ onSelectTool }: DashboardPageProps) {
   const cardsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const heroItems = document.querySelectorAll('.dashboard-hero-content > *');
-    if (heroItems.length > 0) {
+    const heroItems = containerRef.current?.querySelectorAll('.dashboard-hero-content > *');
+    if (heroItems?.length) {
       animate(heroItems, {
         opacity: [0, 1],
         y: [18, 0],
@@ -112,22 +112,23 @@ export default function DashboardPage({ onSelectTool }: DashboardPageProps) {
         ease: 'outExpo'
       });
     }
+  }, []);
 
-    if (cardsContainerRef.current) {
-      try {
-        const cards = cardsContainerRef.current.querySelectorAll('.tool-grid-card');
-        if (cards.length > 0) {
-          animate(cards as any, {
-            opacity: [0, 1],
-            y: [16, 0],
-            duration: 350,
-            delay: stagger(30),
-            ease: 'outQuad'
-          });
-        }
-      } catch (err) {
-        console.warn('Anime error:', err);
+  useEffect(() => {
+    if (!cardsContainerRef.current) return;
+    try {
+      const cards = cardsContainerRef.current.querySelectorAll('.tool-grid-card');
+      if (cards.length > 0) {
+        animate(cards, {
+          opacity: [0, 1],
+          y: [12, 0],
+          duration: 320,
+          delay: stagger(24),
+          ease: 'outQuad'
+        });
       }
+    } catch (err) {
+      console.warn('Anime error:', err);
     }
   }, [selectedCategory, searchQuery]);
 
@@ -190,7 +191,7 @@ export default function DashboardPage({ onSelectTool }: DashboardPageProps) {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search all 15 tools (e.g. compress, enhance, pdf, qr, hash)..."
+              aria-label="Search tools by name or feature"\n              placeholder="Search tools: compress, enhance, PDF, QR..."
               className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-2xs placeholder:text-slate-400 transition-all"
             />
           </div>
@@ -229,7 +230,7 @@ export default function DashboardPage({ onSelectTool }: DashboardPageProps) {
       </div>
 
       {/* Colorful Animated Tools Grid */}
-      <div ref={cardsContainerRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div ref={cardsContainerRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" aria-live="polite">
         {filteredTools.map((tool) => {
           const IconComp = ICON_MAP[tool.iconName] || Sparkles;
           const theme = CATEGORY_COLORS[tool.category];
@@ -237,7 +238,16 @@ export default function DashboardPage({ onSelectTool }: DashboardPageProps) {
           return (
             <div
               key={tool.id}
+              role="button"
+              tabIndex={0}
+              aria-label={`Open ${tool.name}: ${tool.shortDesc}`}
               onClick={() => onSelectTool(tool.id)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  onSelectTool(tool.id);
+                }
+              }}
               className="tool-grid-card group bg-white rounded-3xl border border-slate-200 p-5 hover:border-transparent hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer flex flex-col justify-between relative overflow-hidden"
             >
               {/* Colorful gradient hover accent header */}
