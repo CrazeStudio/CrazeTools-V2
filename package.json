@@ -1,6 +1,5 @@
 {
   "name": "craze-tools-v2",
-  "packageManager": "npm@10.8.2",
   "private": true,
   "version": "0.0.0",
   "type": "module",
