@@ -426,7 +426,7 @@ export default function App() {
                 className="hidden sm:flex items-center gap-1.5 text-[11px] font-bold text-emerald-400 hover:text-emerald-300 bg-emerald-950/40 hover:bg-emerald-950/60 px-3 py-1.5 rounded-xl border border-emerald-500/30 transition-all cursor-pointer"
               >
                 <Cpu size={13} />
-                <span>Purge RAM</span>
+                <span>Clear Temp</span>
               </button>
 
               <button
