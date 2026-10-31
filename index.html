@@ -1,18 +1,41 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CrazeTools</title>
-    <meta name="description" content="A focused toolkit for image editing, PDF workflows, converters, and developer utilities." />
-    <meta property="og:title" content="CrazeTools" />
-    <meta property="og:description" content="An all-in-one daily utility toolkit for images, PDFs, and units." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8fc">
+  <meta name="description" content="A calmer collection of useful tools. Private by design: your files stay on your device.">
+  <link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/icon.svg"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/a11y.css">
+  <title>CrazeTools — Your everyday toolkit</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home" aria-label="CrazeTools home"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M18.8 3.8 8.2 17.2h7.1l-2 11 10.5-14h-7.2l2.2-10.4Z"/></svg></span><span>craze<span class="brand-light">tools</span><small>MAKE THE LITTLE THINGS EASY</small></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#home" data-view="home"><span class="nav-icon">⌂</span>Home</a>
+        <a class="nav-link" href="#dashboard" data-view="dashboard"><span class="nav-icon">▦</span>My dashboard</a>
+      </nav>
+      <div class="side-label category-label">YOUR TOOLBOX <button class="tiny-plus" id="allToolsBtn" aria-label="Show all tools">+</button></div>
+      <nav class="side-nav category-nav" aria-label="Tool categories">
+        <a class="nav-link" href="#daily" data-category="Daily"><span class="cat-dot dot-violet"></span>Daily tools <span class="count">21</span></a>
+        <a class="nav-link" href="#pdf" data-category="PDF"><span class="cat-dot dot-coral"></span>PDF tools <span class="count">15</span></a>
+        <a class="nav-link" href="#image" data-category="Image"><span class="cat-dot dot-mint"></span>Image tools <span class="count">15</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="privacy-mini"><span class="shield">◈</span><div><strong>Private by nature</strong><span>Files stay on this device.</span></div></div>
+        <a class="nav-link" href="#privacy" data-page="privacy"><span class="nav-icon">◉</span>Privacy</a>
+        <a class="nav-link" href="#terms" data-page="terms"><span class="nav-icon">≡</span>Terms</a>
+      </div>
+    </aside>
 
+    <main class="main-area">
+      <header class="topbar"><button class="icon-button mobile-menu" id="menuBtn" aria-label="Open navigation">☰</button><div class="crumb" id="breadcrumb">Workspace <span>/</span> Home</div><div class="top-actions"><span class="offline-pill"><i></i><span id="connectionLabel">Offline ready</span></span><button class="avatar" id="avatarBtn" aria-label="Open dashboard">S</button></div></header>
+      <div class="content" id="content"></div>
+      <footer class="site-footer"><span>Made for the little things. <b>✳</b></span><span><a href="#privacy" data-page="privacy">Privacy</a><a href="#terms" data-page="terms">Terms</a><span class="footer-private">◈ Files never leave your device</span></span></footer>
+    </main>
+  </div>
+  <div class="toast-region" id="toasts" aria-live="polite" aria-atomic="true"></div>
+  <div class="modal-backdrop" id="toolModal" hidden><section class="tool-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close tool">×</button><div id="modalContent"></div></section></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

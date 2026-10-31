@@ -1,0 +1,5 @@
+:focus-visible{outline:3px solid #a695fa;outline-offset:3px}
+.tool-card:focus-visible,.quick-card:focus-visible,.nav-link:focus-visible{outline-offset:2px}
+.dropzone.dragging{border-color:#7258e8;background:#f0edff}
+button:disabled{opacity:.55;cursor:wait}
+@media(forced-colors:active){.tool-icon,.offline-pill,.filter-chip.active{border:1px solid ButtonText}}
