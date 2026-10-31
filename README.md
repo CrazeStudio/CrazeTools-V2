@@ -14,16 +14,16 @@ Open <http://localhost:4173>. The first page load needs the local server. After 
 
 ## Included UI
 
-- Responsive home, tool search, category filters, 51 tool cards, favorites, recent tools, and dashboard.
+- Responsive home, tool search, category filters, 52 tool cards, favorites, recent tools, and dashboard.
 - Local storage only for favorite IDs and recent tool IDs. The dashboard includes a clear-data action.
 - Static Privacy and Terms pages that describe the current app behavior and call out launch details that the operator must supply.
 - Web app manifest and service worker for caching the interface.
-- Browser-side text utilities and several image operations (metadata, resize, convert, compress, rotate, flip, grayscale, blur, brightness/contrast, text watermark).
+- Browser-side text utilities, a locally generated compact QR code, adaptive chunked SHA-256 file hashing in a Web Worker, and image operations (metadata, resize, convert, compress, rotate, flip, grayscale, blur, brightness/contrast, text watermark).
 - Local-only input selection and download actions; there is no upload endpoint.
 
 ## Processor availability
 
-The catalog is the product scope, not a claim that every listed processor is finished. PDF tools, QR rendering, background removal, image overlay watermark, and image cropping currently show a clear not-included message. Add audited, locally bundled browser processors before presenting those tools as available. Do not connect a cloud conversion or image API: that would violate the offline-only requirement. The page currently uses conservative file-size guidance rather than automatic hardware benchmarking or adaptive chunking; large-file processors still need a dedicated worker and device-capability policy.
+The catalog is the product scope, not a claim that every listed processor is finished. PDF tools, background removal, image overlay watermark, and image cropping currently show a clear not-included message. Do not connect a cloud conversion or image API: that would violate the offline-only requirement. Chunked SHA-256 selects a conservative chunk size from browser-provided device memory and CPU concurrency hints; other file processors still need their own worker and device-capability handling.
 
 The interface uses system font fallbacks and does not fetch fonts, scripts, analytics, or other assets from third parties.
 

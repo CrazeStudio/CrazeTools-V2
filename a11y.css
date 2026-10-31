@@ -1,5 +1,8 @@
 :focus-visible{outline:3px solid #a695fa;outline-offset:3px}
 .tool-card:focus-visible,.quick-card:focus-visible,.nav-link:focus-visible{outline-offset:2px}
+.card-open{width:100%;height:100%;padding:0;border:0;background:transparent;text-align:left;color:inherit;cursor:pointer;font:inherit}
+.tool-card>.favorite{position:absolute;right:10px;top:10px}
+.tool-card .tool-card-top>span:last-child{width:18px;height:18px}
 .dropzone.dragging{border-color:#7258e8;background:#f0edff}
 button:disabled{opacity:.55;cursor:wait}
 @media(forced-colors:active){.tool-icon,.offline-pill,.filter-chip.active{border:1px solid ButtonText}}
